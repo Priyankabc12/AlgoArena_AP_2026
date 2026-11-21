@@ -1,0 +1,30 @@
+=== W10 run 1 ===
+Update on submissions  (cost=0.29..8.31 rows=1 width=22) (actual time=0.114..0.116 rows=1 loops=1)
+  Buffers: shared hit=26
+  ->  Index Scan using submissions_pkey on submissions  (cost=0.29..8.31 rows=1 width=22) (actual time=0.008..0.008 rows=1 loops=1)
+        Index Cond: (id = 'sub42'::text)
+        Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=98
+Planning Time: 0.235 ms
+Execution Time: 0.167 ms
+=== W10 run 2 ===
+Update on submissions  (cost=0.29..8.31 rows=1 width=22) (actual time=0.086..0.088 rows=1 loops=1)
+  Buffers: shared hit=28
+  ->  Index Scan using submissions_pkey on submissions  (cost=0.29..8.31 rows=1 width=22) (actual time=0.012..0.013 rows=1 loops=1)
+        Index Cond: (id = 'sub42'::text)
+        Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=98
+Planning Time: 0.260 ms
+Execution Time: 0.136 ms
+=== W10 run 3 ===
+Update on submissions  (cost=0.29..8.31 rows=1 width=22) (actual time=0.101..0.103 rows=1 loops=1)
+  Buffers: shared hit=28
+  ->  Index Scan using submissions_pkey on submissions  (cost=0.29..8.31 rows=1 width=22) (actual time=0.014..0.015 rows=1 loops=1)
+        Index Cond: (id = 'sub42'::text)
+        Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=98
+Planning Time: 0.240 ms
+Execution Time: 0.150 ms

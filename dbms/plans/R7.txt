@@ -1,0 +1,78 @@
+=== R7 run 1 ===
+Limit  (cost=40.67..40.69 rows=5 width=63) (actual time=0.113..0.115 rows=5 loops=1)
+  Buffers: shared hit=18
+  ->  Sort  (cost=40.67..40.69 rows=5 width=63) (actual time=0.113..0.113 rows=5 loops=1)
+        Sort Key: s.created_at DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=18
+        ->  Hash Join  (cost=23.19..40.62 rows=5 width=63) (actual time=0.066..0.102 rows=5 loops=1)
+              Hash Cond: (q.id = s.question_id)
+              Buffers: shared hit=15
+              ->  Seq Scan on questions q  (cost=0.00..13.00 rows=500 width=28) (actual time=0.002..0.026 rows=500 loops=1)
+                    Buffers: shared hit=8
+              ->  Hash  (cost=23.13..23.13 rows=5 width=43) (actual time=0.058..0.058 rows=5 loops=1)
+                    Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                    Buffers: shared hit=7
+                    ->  Bitmap Heap Scan on submissions s  (cost=4.33..23.13 rows=5 width=43) (actual time=0.022..0.054 rows=5 loops=1)
+                          Recheck Cond: (user_id = 'u42'::text)
+                          Heap Blocks: exact=5
+                          Buffers: shared hit=7
+                          ->  Bitmap Index Scan on submissions_user_id_question_id_created_at_idx  (cost=0.00..4.33 rows=5 width=0) (actual time=0.016..0.016 rows=5 loops=1)
+                                Index Cond: (user_id = 'u42'::text)
+                                Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=287
+Planning Time: 0.768 ms
+Execution Time: 0.272 ms
+=== R7 run 2 ===
+Limit  (cost=40.67..40.69 rows=5 width=63) (actual time=0.168..0.169 rows=5 loops=1)
+  Buffers: shared hit=18
+  ->  Sort  (cost=40.67..40.69 rows=5 width=63) (actual time=0.167..0.168 rows=5 loops=1)
+        Sort Key: s.created_at DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=18
+        ->  Hash Join  (cost=23.19..40.62 rows=5 width=63) (actual time=0.037..0.068 rows=5 loops=1)
+              Hash Cond: (q.id = s.question_id)
+              Buffers: shared hit=15
+              ->  Seq Scan on questions q  (cost=0.00..13.00 rows=500 width=28) (actual time=0.004..0.023 rows=500 loops=1)
+                    Buffers: shared hit=8
+              ->  Hash  (cost=23.13..23.13 rows=5 width=43) (actual time=0.027..0.027 rows=5 loops=1)
+                    Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                    Buffers: shared hit=7
+                    ->  Bitmap Heap Scan on submissions s  (cost=4.33..23.13 rows=5 width=43) (actual time=0.013..0.022 rows=5 loops=1)
+                          Recheck Cond: (user_id = 'u42'::text)
+                          Heap Blocks: exact=5
+                          Buffers: shared hit=7
+                          ->  Bitmap Index Scan on submissions_user_id_question_id_created_at_idx  (cost=0.00..4.33 rows=5 width=0) (actual time=0.009..0.009 rows=5 loops=1)
+                                Index Cond: (user_id = 'u42'::text)
+                                Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=287
+Planning Time: 1.643 ms
+Execution Time: 0.200 ms
+=== R7 run 3 ===
+Limit  (cost=40.67..40.69 rows=5 width=63) (actual time=0.069..0.071 rows=5 loops=1)
+  Buffers: shared hit=18
+  ->  Sort  (cost=40.67..40.69 rows=5 width=63) (actual time=0.068..0.069 rows=5 loops=1)
+        Sort Key: s.created_at DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=18
+        ->  Hash Join  (cost=23.19..40.62 rows=5 width=63) (actual time=0.029..0.058 rows=5 loops=1)
+              Hash Cond: (q.id = s.question_id)
+              Buffers: shared hit=15
+              ->  Seq Scan on questions q  (cost=0.00..13.00 rows=500 width=28) (actual time=0.002..0.019 rows=500 loops=1)
+                    Buffers: shared hit=8
+              ->  Hash  (cost=23.13..23.13 rows=5 width=43) (actual time=0.021..0.021 rows=5 loops=1)
+                    Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                    Buffers: shared hit=7
+                    ->  Bitmap Heap Scan on submissions s  (cost=4.33..23.13 rows=5 width=43) (actual time=0.010..0.017 rows=5 loops=1)
+                          Recheck Cond: (user_id = 'u42'::text)
+                          Heap Blocks: exact=5
+                          Buffers: shared hit=7
+                          ->  Bitmap Index Scan on submissions_user_id_question_id_created_at_idx  (cost=0.00..4.33 rows=5 width=0) (actual time=0.007..0.007 rows=5 loops=1)
+                                Index Cond: (user_id = 'u42'::text)
+                                Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=287
+Planning Time: 0.381 ms
+Execution Time: 0.095 ms

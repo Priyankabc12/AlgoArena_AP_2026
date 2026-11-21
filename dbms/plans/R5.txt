@@ -1,0 +1,69 @@
+=== R5 run 1 ===
+Sort  (cost=34.48..34.49 rows=2 width=57) (actual time=0.079..0.080 rows=2 loops=1)
+  Sort Key: tc."position"
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=18
+  ->  Nested Loop  (cost=4.63..34.47 rows=2 width=57) (actual time=0.020..0.031 rows=2 loops=1)
+        Buffers: shared hit=15
+        ->  Index Scan using questions_slug_key on questions q  (cost=0.27..8.29 rows=1 width=40) (actual time=0.009..0.009 rows=1 loops=1)
+              Index Cond: (slug = 'question-42'::text)
+              Buffers: shared hit=3
+        ->  Bitmap Heap Scan on test_cases tc  (cost=4.36..26.16 rows=2 width=21) (actual time=0.010..0.020 rows=2 loops=1)
+              Recheck Cond: (q.id = question_id)
+              Filter: is_sample
+              Rows Removed by Filter: 8
+              Heap Blocks: exact=10
+              Buffers: shared hit=12
+              ->  Bitmap Index Scan on test_cases_question_id_position_key  (cost=0.00..4.36 rows=10 width=0) (actual time=0.005..0.005 rows=10 loops=1)
+                    Index Cond: (question_id = q.id)
+                    Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=204
+Planning Time: 1.191 ms
+Execution Time: 0.117 ms
+=== R5 run 2 ===
+Sort  (cost=34.48..34.49 rows=2 width=57) (actual time=0.038..0.039 rows=2 loops=1)
+  Sort Key: tc."position"
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=18
+  ->  Nested Loop  (cost=4.63..34.47 rows=2 width=57) (actual time=0.016..0.026 rows=2 loops=1)
+        Buffers: shared hit=15
+        ->  Index Scan using questions_slug_key on questions q  (cost=0.27..8.29 rows=1 width=40) (actual time=0.006..0.006 rows=1 loops=1)
+              Index Cond: (slug = 'question-42'::text)
+              Buffers: shared hit=3
+        ->  Bitmap Heap Scan on test_cases tc  (cost=4.36..26.16 rows=2 width=21) (actual time=0.009..0.019 rows=2 loops=1)
+              Recheck Cond: (q.id = question_id)
+              Filter: is_sample
+              Rows Removed by Filter: 8
+              Heap Blocks: exact=10
+              Buffers: shared hit=12
+              ->  Bitmap Index Scan on test_cases_question_id_position_key  (cost=0.00..4.36 rows=10 width=0) (actual time=0.004..0.004 rows=10 loops=1)
+                    Index Cond: (question_id = q.id)
+                    Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=204
+Planning Time: 0.682 ms
+Execution Time: 0.068 ms
+=== R5 run 3 ===
+Sort  (cost=34.48..34.49 rows=2 width=57) (actual time=0.044..0.045 rows=2 loops=1)
+  Sort Key: tc."position"
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=18
+  ->  Nested Loop  (cost=4.63..34.47 rows=2 width=57) (actual time=0.021..0.032 rows=2 loops=1)
+        Buffers: shared hit=15
+        ->  Index Scan using questions_slug_key on questions q  (cost=0.27..8.29 rows=1 width=40) (actual time=0.007..0.007 rows=1 loops=1)
+              Index Cond: (slug = 'question-42'::text)
+              Buffers: shared hit=3
+        ->  Bitmap Heap Scan on test_cases tc  (cost=4.36..26.16 rows=2 width=21) (actual time=0.013..0.023 rows=2 loops=1)
+              Recheck Cond: (q.id = question_id)
+              Filter: is_sample
+              Rows Removed by Filter: 8
+              Heap Blocks: exact=10
+              Buffers: shared hit=12
+              ->  Bitmap Index Scan on test_cases_question_id_position_key  (cost=0.00..4.36 rows=10 width=0) (actual time=0.007..0.007 rows=10 loops=1)
+                    Index Cond: (question_id = q.id)
+                    Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=204
+Planning Time: 0.643 ms
+Execution Time: 0.081 ms

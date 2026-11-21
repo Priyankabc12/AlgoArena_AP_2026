@@ -1,0 +1,24 @@
+=== W9 run 1 ===
+Insert on submissions  (cost=0.00..0.02 rows=1 width=156) (actual time=0.145..0.146 rows=1 loops=1)
+  Buffers: shared hit=68
+  ->  Result  (cost=0.00..0.02 rows=1 width=156) (actual time=0.004..0.005 rows=1 loops=1)
+Planning Time: 0.028 ms
+Trigger for constraint submissions_user_id_fkey: time=0.247 calls=1
+Trigger for constraint submissions_question_id_fkey: time=0.115 calls=1
+Execution Time: 0.523 ms
+=== W9 run 2 ===
+Insert on submissions  (cost=0.00..0.02 rows=1 width=156) (actual time=0.109..0.110 rows=1 loops=1)
+  Buffers: shared hit=68
+  ->  Result  (cost=0.00..0.02 rows=1 width=156) (actual time=0.006..0.006 rows=1 loops=1)
+Planning Time: 0.030 ms
+Trigger for constraint submissions_user_id_fkey: time=0.228 calls=1
+Trigger for constraint submissions_question_id_fkey: time=0.128 calls=1
+Execution Time: 0.484 ms
+=== W9 run 3 ===
+Insert on submissions  (cost=0.00..0.02 rows=1 width=156) (actual time=0.104..0.105 rows=1 loops=1)
+  Buffers: shared hit=68
+  ->  Result  (cost=0.00..0.02 rows=1 width=156) (actual time=0.005..0.005 rows=1 loops=1)
+Planning Time: 0.027 ms
+Trigger for constraint submissions_user_id_fkey: time=0.192 calls=1
+Trigger for constraint submissions_question_id_fkey: time=0.097 calls=1
+Execution Time: 0.411 ms

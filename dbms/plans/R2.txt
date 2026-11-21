@@ -1,0 +1,30 @@
+=== R2 run 1 ===
+Limit  (cost=0.29..8.30 rows=1 width=88) (actual time=0.008..0.009 rows=1 loops=1)
+  Buffers: shared hit=3
+  ->  Index Scan using user_email_key on "user" u  (cost=0.29..8.30 rows=1 width=88) (actual time=0.008..0.008 rows=1 loops=1)
+        Index Cond: (email = 'user42@example.com'::text)
+        Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=98
+Planning Time: 0.185 ms
+Execution Time: 0.021 ms
+=== R2 run 2 ===
+Limit  (cost=0.29..8.30 rows=1 width=88) (actual time=0.032..0.034 rows=1 loops=1)
+  Buffers: shared hit=3
+  ->  Index Scan using user_email_key on "user" u  (cost=0.29..8.30 rows=1 width=88) (actual time=0.032..0.032 rows=1 loops=1)
+        Index Cond: (email = 'user42@example.com'::text)
+        Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=98
+Planning Time: 0.578 ms
+Execution Time: 0.087 ms
+=== R2 run 3 ===
+Limit  (cost=0.29..8.30 rows=1 width=88) (actual time=0.017..0.018 rows=1 loops=1)
+  Buffers: shared hit=3
+  ->  Index Scan using user_email_key on "user" u  (cost=0.29..8.30 rows=1 width=88) (actual time=0.016..0.016 rows=1 loops=1)
+        Index Cond: (email = 'user42@example.com'::text)
+        Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=98
+Planning Time: 0.475 ms
+Execution Time: 0.177 ms

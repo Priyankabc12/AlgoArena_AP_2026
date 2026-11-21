@@ -1,0 +1,51 @@
+=== W11 run 1 ===
+Insert on submission_case_results  (cost=4.82..6.07 rows=100 width=185) (actual time=0.231..0.236 rows=2 loops=1)
+  Buffers: shared hit=75
+  ->  Subquery Scan on "*SELECT*"  (cost=4.82..6.07 rows=100 width=185) (actual time=0.028..0.029 rows=2 loops=1)
+        Buffers: shared hit=6
+        ->  Sort  (cost=4.82..5.07 rows=100 width=185) (actual time=0.027..0.027 rows=2 loops=1)
+              Sort Key: result."position"
+              Sort Method: quicksort  Memory: 25kB
+              Buffers: shared hit=6
+              ->  Function Scan on jsonb_to_recordset result  (cost=0.00..1.50 rows=100 width=185) (actual time=0.019..0.019 rows=2 loops=1)
+                    Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=16
+Planning Time: 0.065 ms
+Trigger for constraint submission_case_results_submission_id_fkey: time=0.241 calls=2
+Trigger for constraint submission_case_results_test_case_id_fkey: time=0.011 calls=2
+Execution Time: 0.516 ms
+=== W11 run 2 ===
+Insert on submission_case_results  (cost=4.82..6.07 rows=100 width=185) (actual time=0.134..0.140 rows=2 loops=1)
+  Buffers: shared hit=78
+  ->  Subquery Scan on "*SELECT*"  (cost=4.82..6.07 rows=100 width=185) (actual time=0.029..0.030 rows=2 loops=1)
+        Buffers: shared hit=6
+        ->  Sort  (cost=4.82..5.07 rows=100 width=185) (actual time=0.028..0.029 rows=2 loops=1)
+              Sort Key: result."position"
+              Sort Method: quicksort  Memory: 25kB
+              Buffers: shared hit=6
+              ->  Function Scan on jsonb_to_recordset result  (cost=0.00..1.50 rows=100 width=185) (actual time=0.020..0.021 rows=2 loops=1)
+                    Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=16
+Planning Time: 0.063 ms
+Trigger for constraint submission_case_results_submission_id_fkey: time=0.244 calls=2
+Trigger for constraint submission_case_results_test_case_id_fkey: time=0.011 calls=2
+Execution Time: 0.423 ms
+=== W11 run 3 ===
+Insert on submission_case_results  (cost=4.82..6.07 rows=100 width=185) (actual time=0.137..0.142 rows=2 loops=1)
+  Buffers: shared hit=78
+  ->  Subquery Scan on "*SELECT*"  (cost=4.82..6.07 rows=100 width=185) (actual time=0.030..0.030 rows=2 loops=1)
+        Buffers: shared hit=6
+        ->  Sort  (cost=4.82..5.07 rows=100 width=185) (actual time=0.029..0.029 rows=2 loops=1)
+              Sort Key: result."position"
+              Sort Method: quicksort  Memory: 25kB
+              Buffers: shared hit=6
+              ->  Function Scan on jsonb_to_recordset result  (cost=0.00..1.50 rows=100 width=185) (actual time=0.021..0.021 rows=2 loops=1)
+                    Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=16
+Planning Time: 0.063 ms
+Trigger for constraint submission_case_results_submission_id_fkey: time=0.238 calls=2
+Trigger for constraint submission_case_results_test_case_id_fkey: time=0.011 calls=2
+Execution Time: 0.419 ms

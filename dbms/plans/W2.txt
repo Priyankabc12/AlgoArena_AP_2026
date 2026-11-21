@@ -1,0 +1,21 @@
+=== W2 run 1 ===
+Insert on account  (cost=0.00..0.03 rows=1 width=320) (actual time=0.202..0.204 rows=1 loops=1)
+  Buffers: shared hit=52
+  ->  Result  (cost=0.00..0.03 rows=1 width=320) (actual time=0.008..0.008 rows=1 loops=1)
+Planning Time: 0.046 ms
+Trigger for constraint account_userId_fkey: time=0.294 calls=1
+Execution Time: 0.522 ms
+=== W2 run 2 ===
+Insert on account  (cost=0.00..0.03 rows=1 width=320) (actual time=0.123..0.124 rows=1 loops=1)
+  Buffers: shared hit=52
+  ->  Result  (cost=0.00..0.03 rows=1 width=320) (actual time=0.007..0.007 rows=1 loops=1)
+Planning Time: 0.035 ms
+Trigger for constraint account_userId_fkey: time=0.236 calls=1
+Execution Time: 0.381 ms
+=== W2 run 3 ===
+Insert on account  (cost=0.00..0.03 rows=1 width=320) (actual time=0.095..0.096 rows=1 loops=1)
+  Buffers: shared hit=52
+  ->  Result  (cost=0.00..0.03 rows=1 width=320) (actual time=0.006..0.006 rows=1 loops=1)
+Planning Time: 0.029 ms
+Trigger for constraint account_userId_fkey: time=0.226 calls=1
+Execution Time: 0.338 ms

@@ -1,0 +1,45 @@
+=== W8 run 1 ===
+Insert on test_cases  (cost=4.32..5.07 rows=100 width=77) (actual time=0.192..0.198 rows=2 loops=1)
+  Buffers: shared hit=77
+  ->  Subquery Scan on "*SELECT*"  (cost=4.32..5.07 rows=100 width=77) (actual time=0.044..0.045 rows=2 loops=1)
+        Buffers: shared hit=17
+        ->  Sort  (cost=4.32..4.57 rows=100 width=73) (actual time=0.026..0.026 rows=2 loops=1)
+              Sort Key: tc."position"
+              Sort Method: quicksort  Memory: 25kB
+              Buffers: shared hit=3
+              ->  Function Scan on jsonb_to_recordset tc  (cost=0.00..1.00 rows=100 width=73) (actual time=0.019..0.019 rows=2 loops=1)
+Planning:
+  Buffers: shared hit=16
+Planning Time: 0.057 ms
+Trigger for constraint test_cases_question_id_fkey: time=0.234 calls=2
+Execution Time: 0.787 ms
+=== W8 run 2 ===
+Insert on test_cases  (cost=4.32..5.07 rows=100 width=77) (actual time=0.130..0.135 rows=2 loops=1)
+  Buffers: shared hit=78
+  ->  Subquery Scan on "*SELECT*"  (cost=4.32..5.07 rows=100 width=77) (actual time=0.029..0.030 rows=2 loops=1)
+        Buffers: shared hit=17
+        ->  Sort  (cost=4.32..4.57 rows=100 width=73) (actual time=0.014..0.014 rows=2 loops=1)
+              Sort Key: tc."position"
+              Sort Method: quicksort  Memory: 25kB
+              Buffers: shared hit=3
+              ->  Function Scan on jsonb_to_recordset tc  (cost=0.00..1.00 rows=100 width=73) (actual time=0.007..0.008 rows=2 loops=1)
+Planning:
+  Buffers: shared hit=16
+Planning Time: 0.051 ms
+Trigger for constraint test_cases_question_id_fkey: time=0.181 calls=2
+Execution Time: 0.340 ms
+=== W8 run 3 ===
+Insert on test_cases  (cost=4.32..5.07 rows=100 width=77) (actual time=0.130..0.135 rows=2 loops=1)
+  Buffers: shared hit=78
+  ->  Subquery Scan on "*SELECT*"  (cost=4.32..5.07 rows=100 width=77) (actual time=0.031..0.032 rows=2 loops=1)
+        Buffers: shared hit=17
+        ->  Sort  (cost=4.32..4.57 rows=100 width=73) (actual time=0.016..0.016 rows=2 loops=1)
+              Sort Key: tc."position"
+              Sort Method: quicksort  Memory: 25kB
+              Buffers: shared hit=3
+              ->  Function Scan on jsonb_to_recordset tc  (cost=0.00..1.00 rows=100 width=73) (actual time=0.009..0.009 rows=2 loops=1)
+Planning:
+  Buffers: shared hit=16
+Planning Time: 0.060 ms
+Trigger for constraint test_cases_question_id_fkey: time=0.203 calls=2
+Execution Time: 0.366 ms

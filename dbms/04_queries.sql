@@ -10,6 +10,7 @@
 -- Authentication and sessions (managed by Better Auth)
 -- ---------------------------------------------------------------------------
 
+-- R1
 -- READ
 -- Resolve an authenticated session and its user.
 -- $1 = session token
@@ -31,6 +32,7 @@ WHERE s."token" = $1
   AND s."expiresAt" > CURRENT_TIMESTAMP
 LIMIT 1;
 
+-- R2
 -- READ
 -- Find a user during email sign-in or before admin promotion.
 -- $1 = normalized email address
@@ -47,6 +49,7 @@ FROM "user" AS u
 WHERE u."email" = $1
 LIMIT 1;
 
+-- R3
 -- READ
 -- Load the credential account and owning user for password authentication.
 -- $1 = account ID (normally the user's ID for the credential provider)
@@ -67,6 +70,7 @@ WHERE a."accountId" = $1
   AND a."providerId" = $2
 LIMIT 1;
 
+-- W1
 -- WRITE
 -- Create a user during email/password sign-up.
 -- $1 = user ID, $2 = name, $3 = normalized email, $4 = optional image
@@ -91,6 +95,7 @@ RETURNING
     "createdAt",
     "updatedAt";
 
+-- W2
 -- WRITE
 -- Store the hashed password for a new credential account.
 -- $1 = account row ID, $2 = account ID, $3 = user ID, $4 = password hash
@@ -106,6 +111,7 @@ INSERT INTO "account" (
 VALUES ($1, $2, 'credential', $3, $4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
 RETURNING "id", "accountId", "providerId", "userId";
 
+-- W3
 -- WRITE
 -- Create a signed-in session.
 -- $1 = session ID, $2 = token, $3 = expiry, $4 = IP address,
@@ -123,6 +129,7 @@ INSERT INTO "session" (
 VALUES ($1, $2, $3, $4, $5, $6, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
 RETURNING "id", "token", "expiresAt", "userId";
 
+-- W4
 -- WRITE
 -- Refresh session metadata and expiry.
 -- $1 = session token, $2 = new expiry, $3 = IP address, $4 = user agent
@@ -135,6 +142,7 @@ SET
 WHERE "token" = $1
 RETURNING "id", "token", "expiresAt", "userId";
 
+-- W5
 -- WRITE
 -- Sign out by deleting the active session.
 -- $1 = session token
@@ -142,6 +150,7 @@ DELETE FROM "session"
 WHERE "token" = $1
 RETURNING "id";
 
+-- W6
 -- WRITE
 -- Promote an existing user to administrator.
 -- $1 = user ID returned by the email lookup
@@ -156,6 +165,7 @@ RETURNING "id", "email", "role";
 -- Question creation and test cases
 -- ---------------------------------------------------------------------------
 
+-- W7
 -- WRITE
 -- Create a question. Run this and the following test-case insert in one
 -- transaction so a question cannot be saved without its test cases.
@@ -183,6 +193,7 @@ RETURNING
     "created_at",
     "updated_at";
 
+-- W8
 -- WRITE
 -- Insert all test cases for a newly created question.
 -- $1 = question ID
@@ -215,6 +226,7 @@ RETURNING
     "is_sample",
     "position";
 
+-- R4
 -- READ
 -- Return a newly created question with its ordered test cases.
 -- $1 = question ID
@@ -242,6 +254,7 @@ ORDER BY tc."position" ASC;
 -- Code execution and submission
 -- ---------------------------------------------------------------------------
 
+-- R5
 -- READ
 -- Load a question and only its sample cases for the Run action.
 -- $1 = question slug
@@ -262,6 +275,7 @@ WHERE q."slug" = $1
   AND tc."is_sample" = TRUE
 ORDER BY tc."position" ASC;
 
+-- R6
 -- READ
 -- Load a question and every test case for the Submit action.
 -- $1 = question slug
@@ -281,6 +295,7 @@ JOIN "test_cases" AS tc ON tc."question_id" = q."id"
 WHERE q."slug" = $1
 ORDER BY tc."position" ASC;
 
+-- W9
 -- WRITE
 -- Create a pending submission before sending cases to Judge0.
 -- $1 = submission ID, $2 = user ID, $3 = question ID, $4 = source code
@@ -302,6 +317,7 @@ RETURNING
     "status",
     "created_at";
 
+-- W10
 -- WRITE
 -- Save the final aggregate result for a submission.
 -- $1 = submission ID, $2 = status, $3 = maximum runtime,
@@ -319,6 +335,7 @@ RETURNING
     "memory_kb",
     "created_at";
 
+-- W11
 -- WRITE
 -- Save per-case results. Hidden-case input and expected output are stored as
 -- NULL so submission responses cannot accidentally reveal them.
@@ -369,6 +386,7 @@ RETURNING
     "position",
     "status";
 
+-- W12
 -- WRITE
 -- Mark a submission as failed if execution or persistence stops unexpectedly.
 -- $1 = submission ID
@@ -381,6 +399,7 @@ RETURNING "id", "status";
 -- Submission history
 -- ---------------------------------------------------------------------------
 
+-- R7
 -- READ
 -- List one user's submissions with question information and an optional
 -- question-slug filter.
@@ -402,6 +421,7 @@ ORDER BY s."created_at" DESC
 LIMIT $3
 OFFSET $4;
 
+-- R8
 -- READ
 -- Count submissions for pagination using the same optional filter.
 -- $1 = user ID, $2 = optional question slug
@@ -411,6 +431,7 @@ JOIN "questions" AS q ON q."id" = s."question_id"
 WHERE s."user_id" = $1
   AND ($2::TEXT IS NULL OR q."slug" = $2);
 
+-- R9
 -- READ
 -- Load one submission owned by the signed-in user, including its question and
 -- ordered case-result snapshots.

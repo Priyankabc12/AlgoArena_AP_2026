@@ -1,0 +1,30 @@
+=== W4 run 1 ===
+Update on session  (cost=0.28..8.31 rows=1 width=86) (actual time=0.116..0.118 rows=1 loops=1)
+  Buffers: shared hit=23
+  ->  Index Scan using session_token_key on session  (cost=0.28..8.31 rows=1 width=86) (actual time=0.013..0.013 rows=1 loops=1)
+        Index Cond: (token = 'token42'::text)
+        Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=92
+Planning Time: 0.287 ms
+Execution Time: 0.292 ms
+=== W4 run 2 ===
+Update on session  (cost=0.28..8.31 rows=1 width=86) (actual time=0.113..0.115 rows=1 loops=1)
+  Buffers: shared hit=26
+  ->  Index Scan using session_token_key on session  (cost=0.28..8.31 rows=1 width=86) (actual time=0.013..0.014 rows=1 loops=1)
+        Index Cond: (token = 'token42'::text)
+        Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=92
+Planning Time: 0.222 ms
+Execution Time: 0.160 ms
+=== W4 run 3 ===
+Update on session  (cost=0.28..8.31 rows=1 width=86) (actual time=0.098..0.099 rows=1 loops=1)
+  Buffers: shared hit=26
+  ->  Index Scan using session_token_key on session  (cost=0.28..8.31 rows=1 width=86) (actual time=0.012..0.012 rows=1 loops=1)
+        Index Cond: (token = 'token42'::text)
+        Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=92
+Planning Time: 0.181 ms
+Execution Time: 0.134 ms

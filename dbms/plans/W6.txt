@@ -1,0 +1,30 @@
+=== W6 run 1 ===
+Update on "user"  (cost=0.29..8.31 rows=1 width=46) (actual time=0.093..0.094 rows=1 loops=1)
+  Buffers: shared hit=26
+  ->  Index Scan using user_pkey on "user"  (cost=0.29..8.31 rows=1 width=46) (actual time=0.010..0.010 rows=1 loops=1)
+        Index Cond: (id = 'u42'::text)
+        Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=80
+Planning Time: 0.162 ms
+Execution Time: 0.131 ms
+=== W6 run 2 ===
+Update on "user"  (cost=0.29..8.31 rows=1 width=46) (actual time=0.086..0.087 rows=1 loops=1)
+  Buffers: shared hit=29
+  ->  Index Scan using user_pkey on "user"  (cost=0.29..8.31 rows=1 width=46) (actual time=0.019..0.020 rows=1 loops=1)
+        Index Cond: (id = 'u42'::text)
+        Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=80
+Planning Time: 0.179 ms
+Execution Time: 0.137 ms
+=== W6 run 3 ===
+Update on "user"  (cost=0.29..8.31 rows=1 width=46) (actual time=0.082..0.084 rows=1 loops=1)
+  Buffers: shared hit=29
+  ->  Index Scan using user_pkey on "user"  (cost=0.29..8.31 rows=1 width=46) (actual time=0.014..0.015 rows=1 loops=1)
+        Index Cond: (id = 'u42'::text)
+        Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=80
+Planning Time: 0.161 ms
+Execution Time: 0.122 ms

@@ -1,0 +1,21 @@
+=== W3 run 1 ===
+Insert on session  (cost=0.00..0.03 rows=1 width=184) (actual time=0.178..0.179 rows=1 loops=1)
+  Buffers: shared hit=67
+  ->  Result  (cost=0.00..0.03 rows=1 width=184) (actual time=0.003..0.004 rows=1 loops=1)
+Planning Time: 0.038 ms
+Trigger for constraint session_userId_fkey: time=0.266 calls=1
+Execution Time: 0.457 ms
+=== W3 run 2 ===
+Insert on session  (cost=0.00..0.03 rows=1 width=184) (actual time=0.188..0.189 rows=1 loops=1)
+  Buffers: shared hit=68
+  ->  Result  (cost=0.00..0.03 rows=1 width=184) (actual time=0.005..0.005 rows=1 loops=1)
+Planning Time: 0.173 ms
+Trigger for constraint session_userId_fkey: time=0.312 calls=1
+Execution Time: 0.514 ms
+=== W3 run 3 ===
+Insert on session  (cost=0.00..0.03 rows=1 width=184) (actual time=0.125..0.126 rows=1 loops=1)
+  Buffers: shared hit=68
+  ->  Result  (cost=0.00..0.03 rows=1 width=184) (actual time=0.005..0.005 rows=1 loops=1)
+Planning Time: 0.053 ms
+Trigger for constraint session_userId_fkey: time=0.240 calls=1
+Execution Time: 0.378 ms

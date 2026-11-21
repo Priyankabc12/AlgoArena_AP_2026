@@ -1,0 +1,30 @@
+=== W5 run 1 ===
+Delete on session  (cost=0.28..8.30 rows=1 width=6) (actual time=0.031..0.036 rows=1 loops=1)
+  Buffers: shared hit=7
+  ->  Index Scan using session_token_key on session  (cost=0.28..8.30 rows=1 width=6) (actual time=0.011..0.015 rows=1 loops=1)
+        Index Cond: (token = 'token42'::text)
+        Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=92
+Planning Time: 0.202 ms
+Execution Time: 0.075 ms
+=== W5 run 2 ===
+Delete on session  (cost=0.28..8.30 rows=1 width=6) (actual time=0.022..0.023 rows=1 loops=1)
+  Buffers: shared hit=5
+  ->  Index Scan using session_token_key on session  (cost=0.28..8.30 rows=1 width=6) (actual time=0.010..0.011 rows=1 loops=1)
+        Index Cond: (token = 'token42'::text)
+        Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=92
+Planning Time: 0.277 ms
+Execution Time: 0.066 ms
+=== W5 run 3 ===
+Delete on session  (cost=0.28..8.30 rows=1 width=6) (actual time=0.026..0.027 rows=1 loops=1)
+  Buffers: shared hit=5
+  ->  Index Scan using session_token_key on session  (cost=0.28..8.30 rows=1 width=6) (actual time=0.013..0.014 rows=1 loops=1)
+        Index Cond: (token = 'token42'::text)
+        Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=92
+Planning Time: 0.197 ms
+Execution Time: 0.075 ms
